@@ -1,0 +1,21 @@
+.footer-item {
+  margin: 10px;
+}
+.footer-item th {
+  text-align: start;
+  padding: 5px;
+}
+.footer-item td {
+  padding: 5px;
+  padding-left: 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 300px;
+  font-size: 18px;
+  background-color: rgb(23, 23, 23);
+}

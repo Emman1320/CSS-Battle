@@ -1,0 +1,49 @@
+.navbar {
+  /* padding: 20px; */
+  /* text-align: center; */
+  height: 10vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #ff6464;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+    rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+}
+.logo {
+  /* font-family: "Cinzel", serif; */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* letter-spacing: 0.03ch; */
+  font-size: 32px;
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.battle-name {
+  font-weight: 500;
+  font-size: 22px;
+}
+.dashboard-items {
+  display: flex;
+  gap: 1rem;
+}
+.log-out {
+  cursor: pointer;
+}
+
+@media (max-width: 1920px) {
+  .logo {
+    font-size: 30px;
+  }
+  .battle-name {
+    font-size: 20px;
+  }
+}
