@@ -43,8 +43,8 @@ function App() {
   useEffect(() => {
     window.addEventListener("blur", () => {
       if (battleInfo.teamName.length && !wentOut) {
-        dispatch(logoutHandler());
         wentOut = true;
+        dispatch(logoutHandler());
       }
     });
   }, [battleInfo.teamName.length, dispatch]);
@@ -52,10 +52,9 @@ function App() {
     if (battleInfo.teamName.length) {
       const db = getDatabase();
       const teamDataRef = ref(db, `battle/${battleInfo.teamName}/`);
+      wentOut = false;
       onValue(teamDataRef, (snapshot) => {
         const data = snapshot.val();
-        console.log(data.loggedOutCount);
-        wentOut = false;
         dispatch(battleAction.login(data));
       });
     }

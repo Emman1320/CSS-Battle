@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import DataObjectIcon from "@mui/icons-material/DataObject";
+import CodeIcon from "@mui/icons-material/Code";
 import { Link, useNavigate } from "react-router-dom";
 import { ExitToApp, ExitToAppRounded } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
@@ -20,8 +20,8 @@ const Navbar = ({
       <div className="logo-container">
         <Link to={"/questions"}>
           <div className="logo">
-            <DataObjectIcon style={{ fontSize: "42px" }} />
-            CSS BATTLE
+            <CodeIcon style={{ fontSize: "42px" }} />
+            CRYPTRIX
           </div>
         </Link>
         {location === "battle-area" && (

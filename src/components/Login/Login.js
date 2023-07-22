@@ -39,7 +39,8 @@ const Login = () => {
       teamName.length &&
       password.length &&
       securityKey.length &&
-      securityKey.trim() === battleInfo.securityKey
+      securityKey.trim() ===
+        (teamData !== undefined ? teamData.securityKey : battleInfo.securityKey)
     ) {
       if (teamData === undefined || password.trim() === teamData.password) {
         try {
@@ -69,7 +70,8 @@ const Login = () => {
     }
     if (
       securityKey.length === 0 ||
-      securityKey.trim() !== battleInfo.securityKey
+      securityKey.trim() !==
+        (teamData !== undefined ? teamData.securityKey : battleInfo.securityKey)
     )
       setError({ teamName: false, securityKey: true, password: false });
     if (teamName.length === 0)
@@ -80,7 +82,10 @@ const Login = () => {
           password: false,
         };
       });
-    if (password.length || (teamData && password.trim() !== teamData.password))
+    if (
+      password.length === 0 ||
+      (teamData && password.trim() !== teamData.password)
+    )
       setError((prev) => {
         return {
           teamName: prev.teamName,

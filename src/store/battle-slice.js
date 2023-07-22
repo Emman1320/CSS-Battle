@@ -33,18 +33,18 @@ const QUESTIONS = [
   },
 ];
 /* Function to generate combination of password */
-// const generatePassword = () => {
-//   let password = "";
-//   let str = "abcdefghijklmnopqrstuvwxyz0123456789";
+const generateRandomPassword = (length) => {
+  let password = "";
+  let str = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-//   for (let i = 1; i <= 4; i++) {
-//     let char = Math.floor(Math.random() * str.length + 1);
+  for (let i = 1; i <= length; i++) {
+    let char = Math.floor(Math.random() * str.length + 1);
 
-//     password += str.charAt(char);
-//   }
+    password += str.charAt(char);
+  }
 
-//   return password;
-// };
+  return password;
+};
 export const battleSlice = createSlice({
   name: "battle",
   initialState: {
@@ -73,8 +73,8 @@ export const battleSlice = createSlice({
           }
         }
       }
+      state.allUsersData[state.teamName] = action.payload;
       state.questions = questions;
-      console.log(state.loggedOutCount);
       state.loggedOutCount = action.payload.loggedOutCount;
     },
     logout(state, action) {
@@ -154,10 +154,12 @@ export const logoutHandler = () => {
       }
       if (battleInfo.teamName.length && battleInfo.isLoggedIn) {
         const loggedOutCount = battleInfo.loggedOutCount + 1;
+        let securityKey = battleInfo.securityKey;
+        if (loggedOutCount > 1) securityKey = generateRandomPassword(4);
         await set(ref(db, `battle/${battleInfo.teamName}/`), {
           teamName: battleInfo.teamName,
           password: battleInfo.password,
-          securityKey: battleInfo.securityKey,
+          securityKey: securityKey,
           loggedOutCount: loggedOutCount,
           answers: answers,
         });
