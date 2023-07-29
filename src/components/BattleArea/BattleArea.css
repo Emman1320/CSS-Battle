@@ -1,11 +1,11 @@
 .codingArea {
   width: 45%;
-  border-right: 1px solid #011f3d;
+  border-right: 1px solid #13181c;
   height: 90vh;
 }
 .css-output-container {
   width: 50%;
-  border-right: 1px solid #011f3d;
+  border-right: 1px solid #13181c;
 }
 
 .css-target-container {
@@ -21,7 +21,7 @@
 .codingArea-header,
 .css-target-header,
 .css-output-header {
-  background: #011f3d;
+  background: #13181c;
   height: 7vh;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
     rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
@@ -96,7 +96,7 @@
 }
 .css-output-action button {
   font-family: "Montserrat", sans-serif !important;
-  background-color: #011f3d !important;
+  background-color: #13181c !important;
   font-size: 16px !important;
 }
 .css-output-accuracy {
@@ -111,13 +111,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #011f3d;
+  background-color: #13181c;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px,
     rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
 }
 
 .css-target-colors-container {
-  background-color: #011f3d;
+  background-color: #13181c;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px,
     rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
   margin: 4rem 2rem 0 2rem;
@@ -133,9 +133,7 @@
   gap: 10px;
   flex-wrap: wrap;
 }
-.battleArea-container {
-  /* height: 90vh; */
-}
+
 .chip {
   border-radius: 20px;
   height: 20px;

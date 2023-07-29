@@ -4,7 +4,22 @@
   height: 10vh;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #ff6464;
+  /* background-color: #13181c; */
+  /* background-color: #13181c; */
+  /* background-color: #ff6464; */
+  background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.45) 0%,
+        rgba(0, 0, 0, 0.2) 100%
+      )
+      center center / cover no-repeat,
+    url("https://img.freepik.com/premium-photo/dark-blue-grainy-gradient-texture-background_573550-758.jpg")
+      /* url("https://img.freepik.com/free-vector/gradient-grainy-texture_23-2148976750.jpg") */
+      transparent;
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+
   display: flex;
   align-items: center;
   justify-content: space-between;

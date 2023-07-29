@@ -1,18 +1,48 @@
 import React, { Fragment } from "react";
 import "./Dashboard.css";
-import sampleImage from "../../assets/sample.png";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import Navbar from "../Navbar/Navbar";
-import { useSelector } from "react-redux";
+import Navbar from   "../Navbar/Navbar";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-
+import { battleAction } from "../../store/battle-slice";
+import { Box, Modal, Typography } from "@mui/material";
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "0px solid #13181c",
+  outline: "0",
+  boxShadow: 24,
+  p: 4,
+};
 const Dashboard = () => {
   const battleInfo = useSelector((state) => state.battle);
+  const dispatch = useDispatch();
+  const handleClose = () => {
+    dispatch(battleAction.toggleLoggedOutModal({ showModal: false }));
+  };
   if (!battleInfo?.isLoggedIn) {
     return <Navigate to="/" />;
   }
   return (
     <Fragment>
+      <Modal
+        open={Boolean(battleInfo.showLoggedOutModal)}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h5" component="h2">
+            Warning
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            If you logout one more time your security key would be lost!
+          </Typography>
+        </Box>
+      </Modal>
       <Navbar
         teamName={battleInfo.teamName}
         isLoggedIn={battleInfo.isLoggedIn}

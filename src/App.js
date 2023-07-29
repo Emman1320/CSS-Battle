@@ -40,10 +40,13 @@ let wentOut = false;
 function App() {
   const dispatch = useDispatch();
   const battleInfo = useSelector((state) => state.battle);
+
+  console.log("rendered");
   useEffect(() => {
     window.addEventListener("blur", () => {
       if (battleInfo.teamName.length && !wentOut) {
         wentOut = true;
+        console.log("logged out ");
         dispatch(logoutHandler());
       }
     });

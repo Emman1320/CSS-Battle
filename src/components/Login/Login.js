@@ -109,6 +109,7 @@ const Login = () => {
             label="Team Name"
             variant="filled"
             sx={{ mb: 3 }}
+            // color="#13181c"
             onChange={(event) => {
               setTeamName(event.target.value);
             }}
@@ -119,6 +120,7 @@ const Login = () => {
             label="Password"
             variant="filled"
             type="password"
+            // color="#13181c"
             sx={{ mb: 3 }}
             onChange={(event) => {
               setPassword(event.target.value);
@@ -130,6 +132,7 @@ const Login = () => {
             label="Security Key"
             variant="filled"
             type="test"
+            // color="#13181c"
             onChange={(event) => {
               setSecurityKey(event.target.value);
             }}

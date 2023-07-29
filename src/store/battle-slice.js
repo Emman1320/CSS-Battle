@@ -55,6 +55,7 @@ export const battleSlice = createSlice({
     questions: QUESTIONS,
     securityKey: "cssbattle",
     password: "",
+    showLoggedOutModal: false,
   },
   reducers: {
     login(state, action) {
@@ -86,7 +87,6 @@ export const battleSlice = createSlice({
         questions[i].code = INITIAL_CODE;
         questions[i].accuracy = "---";
       }
-
       state.loggedOutCount = 0;
     },
     submitAnswer(state, action) {
@@ -97,6 +97,9 @@ export const battleSlice = createSlice({
       questions[idx].code = action.payload.code;
       questions[idx].accuracy = action.payload.accuracy;
       state.questions = questions;
+    },
+    toggleLoggedOutModal(state, action) {
+      state.showLoggedOutModal = action.payload.showModal;
     },
     allUsersData(state, action) {
       state.allUsersData = action.payload;
@@ -141,8 +144,8 @@ export const sendQuestionData = (question) => {
 };
 export const logoutHandler = () => {
   return async (dispatch, getState) => {
+    const battleInfo = getState().battle;
     const sendRequest = async () => {
-      const battleInfo = getState().battle;
       const db = getDatabase();
       const answers = {};
       for (let i = 0; i < battleInfo.questions.length; i++) {
@@ -154,8 +157,10 @@ export const logoutHandler = () => {
       }
       if (battleInfo.teamName.length && battleInfo.isLoggedIn) {
         const loggedOutCount = battleInfo.loggedOutCount + 1;
+
         let securityKey = battleInfo.securityKey;
         if (loggedOutCount > 1) securityKey = generateRandomPassword(4);
+        dispatch(battleAction.toggleLoggedOutModal({ showModal: true }));
         await set(ref(db, `battle/${battleInfo.teamName}/`), {
           teamName: battleInfo.teamName,
           password: battleInfo.password,

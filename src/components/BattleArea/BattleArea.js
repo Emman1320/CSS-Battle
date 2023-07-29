@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 
 import { Button, Tooltip, CircularProgress } from "@mui/material";
 import BalanceIcon from "@mui/icons-material/Balance";
@@ -6,16 +6,13 @@ import BalanceIcon from "@mui/icons-material/Balance";
 import html2canvas from "html2canvas";
 import CodeMirror from "@uiw/react-codemirror";
 import { html } from "@codemirror/lang-html";
-
-import sampleImage from "../../assets/sample.png";
 import "./BattleArea.css";
 import Navbar from "../Navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router-dom";
-import { battleAction, sendQuestionData } from "../../store/battle-slice";
+import { sendQuestionData } from "../../store/battle-slice";
 
 const INITIAL_POS = 100;
-
 const BattleArea = () => {
   const { questionNo } = useParams();
   const dispatch = useDispatch();
@@ -95,12 +92,29 @@ const BattleArea = () => {
 
   return (
     <Fragment>
+      {/* <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h5" component="h2">
+            Warning
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Are you sure you wanna exit? <br />
+            Make sure you submit before leave
+          </Typography>
+        </Box>
+      </Modal> */}
       <Navbar
         teamName={battleInfo.teamName}
         isLoggedIn={battleInfo.isLoggedIn}
         location="battle-area"
         questionName={currentQuestion.name}
         questionNo={currentQuestion.number}
+        battleAreaData={{ questionNo, code, accuracy: accuracyScore }}
       />
       <div className="battleArea-container">
         <div className="codingArea">
